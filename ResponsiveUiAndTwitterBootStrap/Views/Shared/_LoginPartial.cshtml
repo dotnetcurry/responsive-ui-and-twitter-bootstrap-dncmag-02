@@ -1,0 +1,22 @@
+﻿<div class="btn-group pull-right">
+    @if (Request.IsAuthenticated)
+    {
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user">
+        </i>Hello, @User.Identity.Name<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Change Password", "ChangePassword", "Account", routeValues: null, htmlAttributes: new { title = "Change password" })</li>
+            <li class="divider"></li>            
+            <li>@Html.ActionLink("Log off", "LogOff", "Account")</li>
+        </ul>
+    }
+    else
+    {
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user">
+        </i>Login <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }
+</div>

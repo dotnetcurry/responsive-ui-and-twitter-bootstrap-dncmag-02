@@ -1,0 +1,41 @@
+﻿@model ResponsiveUiAndTwitterBootStrap.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>
+        Create a new account.</h2>
+</hgroup>
+<div class="alert alert-info">
+    <p class="message-info">
+        Passwords must be at least 
+        @Membership.MinRequiredPasswordLength characters long.
+    </p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div class="well">
+        <fieldset>
+            <legend>Registration Form</legend>
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName,
+                    new { @class = "span3" })
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email,
+                    new { @class = "span3" })
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password,
+                    new { @class = "span3" })
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword,
+                    new { @class = "span3" })
+            <input type="submit" value="Register" 
+                class="btn btn-primary btn-large" />
+        </fieldset>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
